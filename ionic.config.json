@@ -1,0 +1,7 @@
+{
+  "name": "informMe",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
