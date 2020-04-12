@@ -2,13 +2,12 @@
   <ion-progress-bar type="indeterminate" *ngIf="submissionInProgress"></ion-progress-bar>
 
   <ion-toolbar>
-     
     <ion-title color="primary" *ngIf="!informForm.controls.report_type.value">
-      Reporting a suspected person       
+      Report suspected person       
       <ion-icon name="megaphone-outline" size="large" class="ion-float-end"></ion-icon>
     </ion-title>
     <ion-title color="danger" *ngIf="informForm.controls.report_type.value">
-      Reporting domestic violance      
+      Report domestic violance      
       <ion-icon name="megaphone-outline" size="large" class="ion-float-end"></ion-icon>
     </ion-title>
   </ion-toolbar>
@@ -18,12 +17,13 @@
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large" color="primary" *ngIf="!informForm.controls.report_type.value">
-        Reporting suspected person 
         <ion-icon name="megaphone-outline" size="large" class="ion-float-end"></ion-icon>
+        Report suspected person 
+        
       </ion-title>
       <ion-title size="large" color="danger" *ngIf="informForm.controls.report_type.value">
-        Reporting domestic violance 
         <ion-icon name="megaphone-outline" size="large" class="ion-float-end"></ion-icon>
+        Report domestic violance         
       </ion-title>
     </ion-toolbar>
   </ion-header>
