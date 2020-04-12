@@ -11,4 +11,7 @@ export class InformService {
   submitInformation(postData: Object) {
     return this.apiService.post(`${environment.apiBase}/report`,postData);
   }
+  getMyReportedList() {
+
+  }
 }

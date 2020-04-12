@@ -2,16 +2,29 @@
   <ion-progress-bar type="indeterminate" *ngIf="submissionInProgress"></ion-progress-bar>
 
   <ion-toolbar>
-    <ion-title color="primary" *ngIf="!informForm.controls.report_type.value">Reporting a suspected person</ion-title>
-    <ion-title color="danger" *ngIf="informForm.controls.report_type.value">Reporting domestic violance</ion-title>
+     
+    <ion-title color="primary" *ngIf="!informForm.controls.report_type.value">
+      Reporting a suspected person       
+      <ion-icon name="megaphone-outline" size="large" class="ion-float-end"></ion-icon>
+    </ion-title>
+    <ion-title color="danger" *ngIf="informForm.controls.report_type.value">
+      Reporting domestic violance      
+      <ion-icon name="megaphone-outline" size="large" class="ion-float-end"></ion-icon>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large" color="primary" *ngIf="!informForm.controls.report_type.value">Reporting Suspected Person </ion-title>
-      <ion-title size="large" color="danger" *ngIf="informForm.controls.report_type.value">Reporting Domestic Violance </ion-title>
+      <ion-title size="large" color="primary" *ngIf="!informForm.controls.report_type.value">
+        Reporting suspected person 
+        <ion-icon name="megaphone-outline" size="large" class="ion-float-end"></ion-icon>
+      </ion-title>
+      <ion-title size="large" color="danger" *ngIf="informForm.controls.report_type.value">
+        Reporting domestic violance 
+        <ion-icon name="megaphone-outline" size="large" class="ion-float-end"></ion-icon>
+      </ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -19,14 +32,16 @@
   <ion-list>
     <ion-item *ngIf="errorMessage !== ''"><ion-text color="danger">{{errorMessage}}</ion-text></ion-item>
     <ion-item *ngIf="successMessage !== ''"><ion-text color="success">{{successMessage}}</ion-text></ion-item>
-    
+
     <ion-item>
-      <ion-label *ngIf="!informForm.controls.report_type.value">Toggle to report Domestic Violance </ion-label>
-      <ion-label *ngIf="informForm.controls.report_type.value">Toggle to report Suspected Person </ion-label>
+      <ion-icon name="bug-outline"></ion-icon> &nbsp;&nbsp;
+      <ion-label *ngIf="!informForm.controls.report_type.value">Toggle to report domestic violance </ion-label>
+      <ion-label *ngIf="informForm.controls.report_type.value">Toggle to report suspected person </ion-label>
       <ion-toggle color="danger" formControlName="report_type"></ion-toggle>
     </ion-item>
 
     <ion-item>
+      <ion-icon name="person-outline"></ion-icon> &nbsp;&nbsp;
       <ion-label>Person Name <ion-text color="danger">*</ion-text></ion-label>
       <ion-input type="text"  formControlName="person_name"></ion-input>      
     </ion-item>
@@ -35,6 +50,7 @@
     </ion-item>
 
     <ion-item>
+      <ion-icon name="home-outline"></ion-icon>  &nbsp;&nbsp;
       <ion-label floating>Person Address <ion-text color="danger">*</ion-text></ion-label>
       <ion-input  type="text" formControlName="person_address"></ion-input>     
     </ion-item>
@@ -43,6 +59,7 @@
     </ion-item>
 
     <ion-item>
+      <ion-icon name="call-outline"></ion-icon>  &nbsp;&nbsp;
       <ion-label floating>Your phone number <ion-text color="danger">*</ion-text></ion-label>
       <ion-input  type="text" formControlName="reporter_phone"></ion-input>      
     </ion-item>
