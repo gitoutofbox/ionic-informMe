@@ -18,6 +18,7 @@ export class Tab1Page {
     report_type:    [false, [Validators.required]],
     person_name:    ['', [Validators.required]],
     person_address: ['', [Validators.required]],
+    reporter_name: ['', [Validators.required]],
     reporter_phone: ['', [Validators.required, Validators.pattern("^[0-9_-]{10,12}")]]
   });
 
@@ -25,19 +26,27 @@ export class Tab1Page {
     this.submitted = true;
     this.errorMessage = '';
     this.successMessage = '';
+    console.log(this.informForm);
     if(this.informForm.valid) {
       this.submissionInProgress =  true;
       const postData = {
         report_type: this.informForm.controls.report_type.value,
         person_name: this.informForm.controls.person_name.value,
         person_address: this.informForm.controls.person_address.value,
+        reporter_name: this.informForm.controls.reporter_name.value,
         reporter_phone: this.informForm.controls.reporter_phone.value
       }
       this.informService.submitInformation(postData).subscribe(data => {
+        if(data['status'] === 'error') {
+          this.errorMessage = data['statusMessage'];
+          this.submissionInProgress =  false;
+          return false;
+        }
         this.successMessage = 'Thank you for contributing to save the world';
         this.submissionInProgress =  false;
         this.submitted = false;
         this.informForm.reset();
+        this.informForm.patchValue({'report_type': false});
       },
       error => {
         this.errorMessage = 'Some error occured. Please try again later';

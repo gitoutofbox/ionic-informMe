@@ -41,7 +41,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-icon name="person-outline"></ion-icon> &nbsp;&nbsp;
+      <ion-icon name="skull-outline"></ion-icon> &nbsp;&nbsp;
       <ion-label>Person Name <ion-text color="danger">*</ion-text></ion-label>
       <ion-input type="text"  formControlName="person_name"></ion-input>      
     </ion-item>
@@ -56,6 +56,15 @@
     </ion-item>
     <ion-item *ngIf="submitted && informForm.controls.person_address.invalid">
       <ion-text color="danger" *ngIf="informForm.controls.person_address.hasError('required')">Person address is required</ion-text>        
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="person-outline"></ion-icon>  &nbsp;&nbsp;
+      <ion-label floating>Your name <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input  type="text" formControlName="reporter_name"></ion-input>      
+    </ion-item>
+    <ion-item *ngIf="submitted && informForm.controls.reporter_name.invalid">
+      <ion-text color="danger" *ngIf="informForm.controls.reporter_name.hasError('required')">Your name is required</ion-text>        
     </ion-item>
 
     <ion-item>
