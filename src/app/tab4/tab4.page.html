@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-progress-bar type="indeterminate" *ngIf="apiInProgress"></ion-progress-bar>
+  <ion-toolbar>
+    <ion-title color="primary">
+      Chat Support by IBM Watson
+      <ion-icon name="people-outline" size="large" class="ion-float-end"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" color="primary">
+        Chat Support by IBM Watson 
+        <ion-icon name="people-outline" size="large" class="ion-float-end"></ion-icon>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+ 
+  <!-- <iframe src="https://integrations.eu-gb.assistant.watson.cloud.ibm.com/web/public/da38eaa1-c16e-4b95-b735-2f503fead5c2" height="100%" width="100%"></iframe> -->
+
+  <div class="main">
+    <div class="chat-box">
+      <div class="message-area">
+        <div class="message" *ngFor="let message of messages" [ngClass]="message.type">
+          <p>{{message.text}}</p>
+        </div>
+      </div>
+      <div class="emo-area">
+        <!-- emoji-panel component comes here -->
+      </div>
+      <div class="input-area">
+        <form (submit)="sendMessage()" name="messageForm">
+          <ion-input type="text" name="message" id="message" [readonly]="apiInProgress" [(ngModel)]="message" placeholder="Say something nice..."></ion-input>
+          <button>
+            <ion-icon name="send" ></ion-icon>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</ion-content>

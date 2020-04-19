@@ -15,15 +15,15 @@ export class Tab3Page {
     },
     {
       name: "Hiranmoy Ghatak",
-      id: 399270,
-      email: "sourav3.paul3@cognizant.com",
-      img: 'assets/img/authors/sourav.jpg'
+      id: 519392,
+      email: "hiranmoy.ghatak@cognizant.com",
+      img: 'assets/img/authors/ghatak.jpg'
     },
     {
       name: "Prasenjit Chakraborty",
-      id: 399270,
-      email: "sourav3.paul3@cognizant.com",
-      img: 'assets/img/authors/sourav.jpg'
+      id: 495602,
+      email: "prasenjit.chakraborty2@cognizant.com",
+      img: 'assets/img/authors/p.jpg'
     }
 
   ]

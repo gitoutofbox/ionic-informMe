@@ -9,7 +9,7 @@ export class InformService {
   constructor(private apiService: ApiService) { }
 
   submitInformation(postData: Object) {
-    return this.apiService.post(`${environment.apiBase}/report`,postData);
+    return this.apiService.post(`${environment['apiBase']}/report`,postData);
   }
   getMyReportedList() {
 
