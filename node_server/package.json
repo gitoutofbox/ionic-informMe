@@ -1,0 +1,24 @@
+{
+  "name": "node_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "ibm-watson": "^5.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitoutofbox/ionic-informMe.git"
+  },
+  "author": "Sourav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitoutofbox/ionic-informMe/issues"
+  },
+  "homepage": "https://github.com/gitoutofbox/ionic-informMe#readme"
+}
