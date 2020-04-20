@@ -25,6 +25,22 @@
       integrationID: "7669dccf-fe19-4be0-aa5f-bf1f15390c09", // The ID of this integration.
       region: "eu-gb" // The region your integration is hosted in.
     }).then(function (instance) {
+      // Your handler
+    function handler(obj) {
+      console.log(obj.type, obj.data);
+    }
+    console.log('instance', instance);
+
+    // console.log out details of any "receive" event
+    instance.on({ type: "receive", handler: handler });
+    // console.log out details of any "send" event
+    instance.on({ type: "send", handler: handler });
+
+    // 30 seconds later, unsubscribe from listening to "send" events
+    setTimeout(function(){
+      instance.off({ type: "send", handler: handler});
+    }, 30000);
+    
       instance.render();
     });
   </script>
