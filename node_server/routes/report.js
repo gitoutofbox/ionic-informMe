@@ -1,7 +1,14 @@
 var Q = require('q');
 
 exports.saveReport = function (req, res) {
-    const report_type_id = req.body.report_type == true ? 2 : 1;
+    console.log('req.body.report_type', req.body.report_type)
+    let report_type_id  = '';
+    
+    report_type_id = (req.body.report_type).toLowerCase() == 'domestic violence' ? 2 : 1;
+
+    if(report_type_id == '') {
+        report_type_id = req.body.report_type == true ? 2 : 1;
+    }
     checkAlreadyReported(req.body.person_name, req.body.person_address, report_type_id).then(data => {
         if(data > 0) {
             let resp = {
