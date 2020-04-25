@@ -35,8 +35,8 @@
 
     <ion-item>
       <ion-icon name="bug-outline"></ion-icon> &nbsp;&nbsp;
-      <ion-label *ngIf="!informForm.controls.report_type.value">Toggle to report domestic violance </ion-label>
       <ion-label *ngIf="informForm.controls.report_type.value">Toggle to report suspected person </ion-label>
+      <ion-label *ngIf="!informForm.controls.report_type.value">Toggle to report  domestic violance</ion-label>
       <ion-toggle color="danger" formControlName="report_type"></ion-toggle>
     </ion-item>
 

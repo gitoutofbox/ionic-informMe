@@ -3,7 +3,7 @@ const cors    = require('cors');
 const bodyParser = require('body-parser');
 const db      = require('./database');
 const report    = require('./routes/report')
-const chat      = require('./routes/chat');
+// const chat      = require('./routes/chat');
 const app     = express();
 
 app.use(express.static('app'));
@@ -22,5 +22,5 @@ database.connect(function (err) {
 });
 
 app.post('/report', report.saveReport);
-app.post('/chat/startSession', chat.createSession);
-app.post('/chat/send', chat.sendMessage);
+// app.post('/chat/startSession', chat.createSession);
+// app.post('/chat/send', chat.sendMessage);
