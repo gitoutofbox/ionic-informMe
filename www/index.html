@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Ionic App</title>
+
+  <base href="/" />
+
+  <meta name="color-scheme" content="light dark" />
+  <meta name="viewport"
+    content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+
+  <link rel="icon" type="image/png" href="assets/icon/favicon.png" />
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <script
+  src="https://code.jquery.com/jquery-3.5.0.min.js"
+  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+  crossorigin="anonymous"></script>
+  <script src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js"></script>
+  <script>
+    window.loadWatsonAssistantChat({
+      integrationID: "7669dccf-fe19-4be0-aa5f-bf1f15390c09", // The ID of this integration.
+      region: "eu-gb" // The region your integration is hosted in.
+    }).then(function (instance) {
+      // Your handler
+      function handler(obj) {
+        console.log(obj.type, obj.data);
+      }
+      console.log('instance', instance);
+
+      // console.log out details of any "receive" event
+      instance.on({
+        type: "receive", handler: function (data) {
+          // instance.destroy();
+          // instance.render();
+          if(data.isLatestWelcomeNode) {
+            return false;
+          }
+          let postData = '';
+          let branch_exited = data['data'].output.debug['branch_exited'];
+          if (data['data']['context']) {
+            let contextData = data['data'].context.skills['main skill'].user_defined;
+            if (contextData !== 'undefined') {
+              postData = {
+                report_type: contextData && contextData['report_type'] ? contextData['report_type'] : '',
+                person_name: contextData && contextData['person_name'] ? contextData['person_name'] : '',
+                person_address: contextData && contextData['address'] ? contextData['address'] : '',
+                reporter_name: contextData && contextData['reporter_name'] ? contextData['reporter_name'] : '',
+                person_name: contextData && contextData['person_name'] ? contextData['person_name'] : '',
+                reporter_phone: contextData && contextData['reporter_phone'] ? contextData['reporter_phone'] : ''
+              }
+              // console.log('postData', postData)
+            }
+          }
+          if (typeof branch_exited !== 'undefined' && branch_exited !== 'undefined' && branch_exited === true) {
+            save(postData);
+          }
+          // console.log(data)
+        }
+      });
+      // console.log out details of any "send" event
+      instance.on({ type: "send", handler: handler });
+
+      // 30 seconds later, unsubscribe from listening to "send" events
+      setTimeout(function () {
+        instance.off({ type: "send", handler: handler });
+      }, 30000);
+
+      instance.render();
+    });
+
+
+    function save(dataToPost) {
+
+      $.ajax({
+        method: "POST",
+        url: "http://localhost:8081/report",
+        data: dataToPost
+      })
+        .done(function (msg) {
+          alert("Data Saved ");
+        });
+    }
+  </script>
+</head>
+
+<body>
+  <app-root></app-root>
+<script src="runtime-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="polyfills-es2015.js" type="module"></script><script src="styles-es2015.js" type="module"></script><script src="styles-es5.js" nomodule defer></script><script src="vendor-es2015.js" type="module"></script><script src="vendor-es5.js" nomodule defer></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule defer></script></body>
+
+</html>

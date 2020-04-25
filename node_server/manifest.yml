@@ -1,0 +1,6 @@
+---
+applications:
+- name: inform-me
+  path: ./
+- name: infomr-me-server
+  path: ./node-server
